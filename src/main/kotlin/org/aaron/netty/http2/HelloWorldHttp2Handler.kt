@@ -50,7 +50,8 @@ class HelloWorldHttp2Handler(decoder: Http2ConnectionDecoder,
         if (endOfStream) {
             val content = ctx.alloc().buffer()
             content.writeBytes(RESPONSE_BYTES.duplicate())
-            ByteBufUtil.writeAscii(content, " - via HTTP/2")
+            ByteBufUtil.writeAscii(content, " - via HTTP/2\n")
+            ByteBufUtil.writeAscii(content, "streamId=$streamId method=${headers[":method"]} path=${headers[":path"]}")
             sendResponse(ctx, streamId, content)
         }
     }

@@ -5,10 +5,6 @@ import io.netty.channel.socket.SocketChannel
 import io.netty.handler.ssl.SslContext
 import mu.KLogging
 
-/**
- * Sets up the Netty pipeline for the example server. Depending on the endpoint config, sets up the
- * pipeline for NPN or cleartext HTTP upgrade to HTTP/2.
- */
 class Http2ServerInitializer(
         private val sslCtx: SslContext) : ChannelInitializer<SocketChannel>() {
 
